@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.InteropServices.Marshalling;
 using System.Threading.Tasks;
 
 namespace MealPlanner.Model
@@ -74,7 +77,8 @@ namespace MealPlanner.Model
                     return true;
                 }
             }
-                return false;
+
+            return false;
         }
 
         /// <summary>
@@ -106,7 +110,6 @@ namespace MealPlanner.Model
         /// <param name="file">Path to the ingredients file</param>
         public void LoadIngredientsFile(string file)
         {
-            //Implement Me
         }
     }
 }
