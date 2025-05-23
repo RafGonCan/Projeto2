@@ -66,11 +66,6 @@ namespace MealPlanner.Model
         /// pantry or if there's not enough quantity</returns>
         public bool ConsumeIngredient(IIngredient ingredient, int quantity)
         {
-            if (quantity <= 0)
-            {
-                return false;
-            }
-            
             if (ingredients.ContainsKey(ingredient))
             {
                 if (ingredients[ingredient] >= quantity)
@@ -79,6 +74,7 @@ namespace MealPlanner.Model
                     return true;
                 }
             }
+                return false;
         }
 
         /// <summary>
