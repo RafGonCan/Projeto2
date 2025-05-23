@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MealPlanner.Model
 {
@@ -40,7 +41,19 @@ namespace MealPlanner.Model
         /// <param name="quantity">The new amount to set</param>
         public void AddIngredient(IIngredient ingredient, int quantity)
         {
-            //Implement Me
+            if (quantity <= 0)
+            {
+                return;
+            }
+
+            if (ingredients.ContainsKey(ingredient))
+            {
+                ingredients[ingredient] += quantity;
+            }
+            else
+            {
+                ingredients.Add(ingredient, quantity);
+            }
         }
 
         /// <summary>
@@ -53,8 +66,19 @@ namespace MealPlanner.Model
         /// pantry or if there's not enough quantity</returns>
         public bool ConsumeIngredient(IIngredient ingredient, int quantity)
         {
-            //Implement Me
-            return false;
+            if (quantity <= 0)
+            {
+                return false;
+            }
+            
+            if (ingredients.ContainsKey(ingredient))
+            {
+                if (ingredients[ingredient] >= quantity)
+                {
+                    ingredients[ingredient] -= quantity;
+                    return true;
+                }
+            }
         }
 
         /// <summary>
